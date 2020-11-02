@@ -3,6 +3,7 @@ FIND_PATH(LUA_INCLUDE_PATH_
 	NAMES
 		lualib.h
 	PATHS
+		/usr/include/lua5.1
 		/usr/include
 		/usr/local/include
 		/usr/local/include/lua51
@@ -12,7 +13,7 @@ FIND_PATH(LUA_INCLUDE_PATH_
 
 FIND_LIBRARY(LUA_LIBRARY_PATH_
 	NAMES
-		lua
+		lua5.1
 	PATHS
 		/usr/lib64
 		/usr/lib

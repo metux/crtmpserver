@@ -6,7 +6,7 @@ FILE(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/thelib/src/*.cpp" )
 
 #prepare the include directories
 INCLUDE_DIRECTORIES(
-	${OPENSSL_INCLUDE_PATH}
+	${OPENSSL_INCLUDE_DIRS}
 	${LUA_INCLUDE_DIRS}
 	${CMAKE_SOURCE_DIR}/common/include
 	${CMAKE_SOURCE_DIR}/thelib/include
@@ -18,9 +18,7 @@ IF(${LIB_TYPE} MATCHES "SHARED")
 	TARGET_LINK_LIBRARIES(${PROJECT_NAME} 
 		common 
 		${DL_LIBRARY_PATH} 
-		${OPENSSL_LIBRARY_PATH} 
-		${CRYPTO_LIBRARY_PATH}
-		${Z_LIBRARY_PATH}
+		${OPENSSL_LIBRARIES}
 		#/opt/local/lib/libiconv.dylib
 		#/Users/shiretu/work/ffmpeg_bin/lib/libavcodec.dylib
 		#/Users/shiretu/work/ffmpeg_bin/lib/libavformat.dylib

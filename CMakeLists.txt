@@ -23,13 +23,12 @@ ENDIF(DEFINED CRTMPSERVER_INSTALL_PREFIX)
 #sample commit to trigger HUDSON
 
 #detect additional libraries
-SET(OpenSSL_FIND_REQUIRED true)
-SET(CRYPTO_FIND_REQUIRED true)
-INCLUDE(cmake_find_modules/Find_openssl.cmake)
 INCLUDE(cmake_find_modules/Find_dl.cmake)
 INCLUDE(CMakeDetermineSystem)
 INCLUDE(TestBigEndian)
 INCLUDE(FindPkgConfig)
+
+PKG_CHECK_MODULES(OPENSSL REQUIRED "openssl")
 
 #setup the endianess if not already defined in toolchain file
 if(NOT DEFINED NO_ENDIANESS)

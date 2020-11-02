@@ -23,10 +23,10 @@ ENDIF(DEFINED CRTMPSERVER_INSTALL_PREFIX)
 #sample commit to trigger HUDSON
 
 #detect additional libraries
-INCLUDE(cmake_find_modules/Find_dl.cmake)
-INCLUDE(CMakeDetermineSystem)
 INCLUDE(TestBigEndian)
 INCLUDE(FindPkgConfig)
+INCLUDE(CMakeDetermineSystem)
+INCLUDE(cmake_find_modules/Find_dl.cmake)
 
 PKG_CHECK_MODULES(OPENSSL REQUIRED "openssl")
 

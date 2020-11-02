@@ -24,7 +24,4 @@ DEB_CONFIGURE_FLAGS = \
 override_dh_auto_configure:
 	dh_auto_configure -- $(DEB_CONFIGURE_FLAGS)
 
-get-orig-source:
-	debian/get-svn-source.sh
-
 .PHONY: get-orig-source

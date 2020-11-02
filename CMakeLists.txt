@@ -48,7 +48,7 @@ INCLUDE(cmake_find_modules/Find_dl.cmake)
 INCLUDE(cmake_find_modules/pch_support.cmake)
 INCLUDE(CMakeDetermineSystem)
 INCLUDE(TestBigEndian)
-
+INCLUDE(FindPkgConfig)
 
 #setup the endianess if not already defined in toolchain file
 if(NOT DEFINED NO_ENDIANESS)
@@ -101,10 +101,7 @@ ELSE($ENV{COMPILE_STATIC} MATCHES "1")
 		ADD_SUBDIRECTORY(lua lua)
 	ENDIF(NOT LUA_FOUND)
 
-	INCLUDE(cmake_find_modules/Find_tinyxml.cmake)
-	IF(NOT TINYXML_FOUND)
-		ADD_SUBDIRECTORY(tinyxml tinyxml)
-	ENDIF(NOT TINYXML_FOUND)
+       PKG_CHECK_MODULES(TINYXML REQUIRED tinyxml)
 ENDIF($ENV{COMPILE_STATIC} MATCHES "1")
 
 #fine tunning

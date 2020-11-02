@@ -222,10 +222,10 @@ bool SDP::ParseTransportLine(string raw, Variant &result) {
 				FATAL("Invalid transport line: %s", STR(raw));
 				return false;
 			}
-			all = format("%"PRIu16"-%"PRIu16, data, rtcp);
+			all = format("%" PRIu16"-%" PRIu16, data, rtcp);
 		} else {
 			data = atoi(STR(parts[0]));
-			all = format("%"PRIu16, data);
+			all = format("%" PRIu16, data);
 			rtcp = 0;
 		}
 		if (all != raw) {

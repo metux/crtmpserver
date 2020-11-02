@@ -83,7 +83,7 @@ void IOHandlerManager::RegisterIOHandler(IOHandler* pIOHandler) {
 	}
 	size_t before = _activeIOHandlers.size();
 	_activeIOHandlers[pIOHandler->GetId()] = pIOHandler;
-	DEBUG("Handlers count changed: %"PRIz"u->%"PRIz"u %s", before, before + 1,
+	DEBUG("Handlers count changed: %" PRIz"u->%" PRIz"u %s", before, before + 1,
 			STR(IOHandler::IOHTToString(pIOHandler->GetType())));
 }
 
@@ -95,7 +95,7 @@ void IOHandlerManager::UnRegisterIOHandler(IOHandler *pIOHandler) {
 	if (MAP_HAS1(_activeIOHandlers, pIOHandler->GetId())) {
 		size_t before = _activeIOHandlers.size();
 		_activeIOHandlers.erase(pIOHandler->GetId());
-		DEBUG("Handlers count changed: %"PRIz"u->%"PRIz"u %s", before, before - 1,
+		DEBUG("Handlers count changed: %" PRIz"u->%" PRIz"u %s", before, before - 1,
 				STR(IOHandler::IOHTToString(pIOHandler->GetType())));
 	}
 }

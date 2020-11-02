@@ -372,14 +372,14 @@ OutboundConnectivity * RTSPProtocol::GetOutboundConnectivity(
 		_pOutboundConnectivity = new OutboundConnectivity(forceTcp, this);
 		if (!_pOutboundConnectivity->Initialize()) {
 			FATAL("Unable to initialize outbound connectivity");
-			return false;
+			return 0;
 		}
 		pOutStream->SetConnectivity(_pOutboundConnectivity);
 		_pOutboundConnectivity->SetOutStream(pOutStream);
 
 		if (!pInNetStream->Link(pOutStream)) {
 			FATAL("Unable to link streams");
-			return false;
+			return 0;
 		}
 	}
 
@@ -463,7 +463,7 @@ bool RTSPProtocol::SendMessage(Variant &headers, string &content) {
 
 	//2. Add the content length if required
 	if (content.size() > 0) {
-		headers[RTSP_HEADERS][RTSP_HEADERS_CONTENT_LENGTH] = format("%"PRIz"u", content.size());
+		headers[RTSP_HEADERS][RTSP_HEADERS_CONTENT_LENGTH] = format("%" PRIz"u", content.size());
 	}
 
 	//3. Add the session id if necessary
@@ -706,7 +706,7 @@ bool RTSPProtocol::HandleRTSPMessage(IOBuffer &buffer) {
 		_inboundContent += string((char *) GETIBPOINTER(buffer), chunkLength);
 		buffer.Ignore(chunkLength);
 		if (_inboundContent.size() < _contentLength) {
-			FINEST("Not enough data. Wanted: %u; got: %"PRIz"u", _contentLength, _inboundContent.size());
+			FINEST("Not enough data. Wanted: %u; got: %" PRIz"u", _contentLength, _inboundContent.size());
 			return true;
 		}
 	}

@@ -1654,7 +1654,7 @@ string BaseRTSPAppProtocolHandler::ComputeSDP(RTSPProtocol *pFrom,
 	//3. Prepare the body of the response
 	string result = "";
 	result += "v=0\r\n";
-	result += format("o=- %"PRIu32" 0 IN IP4 %s\r\n", pFrom->GetId(), STR(nearAddress));
+	result += format("o=- %" PRIu32" 0 IN IP4 %s\r\n", pFrom->GetId(), STR(nearAddress));
 	result += "s=" + targetStreamName + "\r\n";
 	result += "u=http://www.evostream.com\r\n";
 	result += "e=contact@evostream.com\r\n";

@@ -206,7 +206,7 @@ bool NSVDocument::ReadPayLoadData() {
 			//             06 - SEI NAL unit
 			if (NALU_TYPE_SEI == NALU_TYPE(nt)) {
 				// get binary header from payload data
-				FINEST("video data offset %"PRIx64, _mediaFile.Cursor());
+				FINEST("video data offset %" PRIx64, _mediaFile.Cursor());
 				uint64_t currentCursor = _mediaFile.Cursor();
 				_buffer.IgnoreAll();
 				_buffer.ReadFromFs(_mediaFile, aux_plus_vidlen);

@@ -112,7 +112,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/basertmpprotocol.cpp
  
  bool BaseRTMPProtocol::SendRawData(Header &header, Channel &channel, uint8_t *pData,
  		uint32_t length) {
-+	FINEST("URSI: %"PRIu32"; length: %"PRIu32, header._uniqueRTMPStreamId, length);
++	FINEST("URSI: %" PRIu32"; length: %" PRIu32, header._uniqueRTMPStreamId, length);
  #ifdef ENFORCE_RTMP_OUTPUT_CHECKS
  	_intermediateBuffer.IgnoreAll();
  	if (!header.Write(channel, _intermediateBuffer)) {
@@ -122,7 +122,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/basertmpprotocol.cpp
  
 -bool BaseRTMPProtocol::SendRawData(uint8_t *pData, uint32_t length) {
 +bool BaseRTMPProtocol::SendRawData(uint8_t *pData, uint32_t length, uint32_t uniqueRTMPStreamId) {
-+	FINEST("URSI: %"PRIu32"; length: %"PRIu32, uniqueRTMPStreamId, length);
++	FINEST("URSI: %" PRIu32"; length: %" PRIu32, uniqueRTMPStreamId, length);
  #ifdef ENFORCE_RTMP_OUTPUT_CHECKS
  	_intermediateBuffer.IgnoreAll();
  	_intermediateBuffer.ReadFromBuffer(pData, length);
@@ -206,7 +206,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/basertmpprotocol.cpp
 +				return true;
 +			channel.state = CS_HEADER;
 +			_selectedChannel = -1;
-+			FINEST("%"PRIu32"; input: %s; channel.lastInProcBytes: %"PRIu32"; wanted: %"PRIu32,
++			FINEST("%" PRIu32"; input: %s; channel.lastInProcBytes: %" PRIu32"; wanted: %" PRIu32,
 +					GetId(),
 +					STR(header),
 +					channel.lastInProcBytes,
@@ -226,7 +226,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/basertmpprotocol.cpp
 -						if (H_SI(header) >= MAX_STREAMS_COUNT) {
 -							FATAL("Incorrect stream index");
 +					if (H_SI(header) >= MAX_STREAMS_COUNT) {
-+						FATAL("The server doesn't support stream ids bigger than %"PRIu32,
++						FATAL("The server doesn't support stream ids bigger than %" PRIu32,
 +								(uint32_t) MAX_STREAMS_COUNT);
 +						return false;
 +					}
@@ -291,7 +291,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/basertmpprotocol.cpp
 -						if (H_SI(header) >= MAX_STREAMS_COUNT) {
 -							FATAL("Incorrect stream index");
 +					if (H_SI(header) >= MAX_STREAMS_COUNT) {
-+						FATAL("The server doesn't support stream ids bigger than %"PRIu32,
++						FATAL("The server doesn't support stream ids bigger than %" PRIu32,
 +								(uint32_t) MAX_STREAMS_COUNT);
 +						return false;
 +					}
@@ -424,12 +424,12 @@ Index: ../../sources/thelib/src/protocols/rtmp/streaming/baseoutnetrtmpstream.cp
 +	_videoCurrentFrameDropped = false;
  	_maxBufferSize = 65536 * 2;
  	_attachedStreamType = 0;
- 	_clientId = format("%d_%d_%"PRIz"u", _pProtocol->GetId(), _rtmpStreamId, (size_t)this);
+ 	_clientId = format("%d_%d_%" PRIz"u", _pProtocol->GetId(), _rtmpStreamId, (size_t)this);
 @@ -167,6 +169,10 @@
  bool BaseOutNetRTMPStream::FeedData(uint8_t *pData, uint32_t dataLength,
  		uint32_t processedLength, uint32_t totalLength,
  		double absoluteTimestamp, bool isAudio) {
-+	string str = format("### ursi: %"PRIu32"; DL: % 6"PRIu32"; processedLength: % 6"PRIu32"; totalLength: % 6"PRIu32"; isAudio: %d",
++	string str = format("### ursi: %" PRIu32"; DL: % 6" PRIu32"; processedLength: % 6" PRIu32"; totalLength: % 6" PRIu32"; isAudio: %d",
 +			_uniqueId, dataLength, processedLength, totalLength, isAudio);
 +	FINEST("%s", STR(str));
 +	assert(((BaseRTMPProtocol *) _pInStream->GetProtocol())->___lastInProcBytes == processedLength);
@@ -595,18 +595,18 @@ Index: ../../sources/thelib/src/protocols/rtmp/streaming/baseoutnetrtmpstream.cp
 +	if (!isAudio) _path[(_pathIdx++) % 65536] = __LINE__;
 +	if (currentFrameDropped) {
 +		if (!isAudio) _path[(_pathIdx++) % 65536] = __LINE__;
-+		FINEST("Frame already dropped on URSI: %"PRIu32, _uniqueId);
++		FINEST("Frame already dropped on URSI: %" PRIu32, _uniqueId);
 +		//current frame was dropped. Test to see if we are in the middle
 +		//of it or this is a new one
 +		if (totalProcessed != 0) {
 +			if (!isAudio) _path[(_pathIdx++) % 65536] = __LINE__;
-+			FINEST("(middle) Frame already dropped on URSI: %"PRIu32, _uniqueId);
++			FINEST("(middle) Frame already dropped on URSI: %" PRIu32, _uniqueId);
 +			//we are in the middle of it. Don't allow execution
 +			bytesCounter += dataLength;
 +			return false;
 +		} else {
 +			if (!isAudio) _path[(_pathIdx++) % 65536] = __LINE__;
-+			FINEST("Exiting frame dropped state on URSI: %"PRIu32, _uniqueId);
++			FINEST("Exiting frame dropped state on URSI: %" PRIu32, _uniqueId);
 +			//this is a new frame. We will detect later if it can be sent
 +			currentFrameDropped = false;
  		}
@@ -649,7 +649,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/streaming/baseoutnetrtmpstream.cp
 +		packetsCounter++;
 +		bytesCounter += dataLength;
 +		currentFrameDropped = true;
-+		FINEST("Drop frame on URSI: %"PRIu32, _uniqueId);
++		FINEST("Drop frame on URSI: %" PRIu32, _uniqueId);
 +		return false;
  	} else {
 -		// we are not allowed to drop frames
@@ -765,7 +765,7 @@ Index: ../../sources/thelib/src/protocols/rtmp/header_le_ba.cpp
 -	//	return format("(RC: %u; HT: %u; CI: %02u; T: % 9u; L: % 6u; MT: % 2u; SI: % 2u; IA: %u)",
 -	//			readCompleted, ht, ci, hf.s.ts, hf.s.ml, hf.s.mt, hf.s.si, isAbsolute);
 -	return "not yet implemented";
-+	return format("(RC: %"PRIu8"; HT: %"PRIu8"; CI: %02"PRIu32"; T: % 9"PRIu32"; L: % 6"PRIu32"; MT: % 2"PRIu8"; SI: % 2"PRIu32"; IA: %"PRIu8"; URSI: %"PRIu32")",
++	return format("(RC: %" PRIu8"; HT: %" PRIu8"; CI: %02" PRIu32"; T: % 9" PRIu32"; L: % 6" PRIu32"; MT: % 2" PRIu8"; SI: % 2" PRIu32"; IA: %" PRIu8"; URSI: %" PRIu32")",
 +			readCompleted, ht, ci, hf.s.ts, hf.s.ml, hf.s.mt, hf.s.si, isAbsolute, _uniqueRTMPStreamId);
  }
  

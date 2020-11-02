@@ -102,7 +102,7 @@ map<uint32_t, BaseOutStream *> StreamsManager::GetWaitingSubscribers(string stre
 	shortSubscribers = FindByTypeByName(ST_OUT, shortName, true, false);
 	longSubscribers = FindByTypeByName(ST_OUT, streamName, true, false);
 
-	//	FINEST("short count: %"PRIz"u; long count: %"PRIz"u",
+	//	FINEST("short count: %" PRIz"u; long count: %" PRIz"u",
 	//			shortSubscribers.size(), longSubscribers.size());
 
 	//3. merge them

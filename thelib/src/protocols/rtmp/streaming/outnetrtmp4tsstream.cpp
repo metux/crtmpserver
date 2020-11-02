@@ -285,18 +285,18 @@ bool OutNetRTMP4TSStream::FeedVideoData(uint8_t *pData, uint32_t dataLength,
 //	uint32_t cursor = 5;
 //	uint32_t computed = 5;
 //	string dbg;
-//	dbg += format("5 bytes: %02"PRIx8" %02"PRIx8" %02"PRIx8" %02"PRIx8" %02"PRIx8"\n",
+//	dbg += format("5 bytes: %02" PRIx8" %02" PRIx8" %02" PRIx8" %02" PRIx8" %02" PRIx8"\n",
 //			pBuffer[0], pBuffer[1], pBuffer[2], pBuffer[3], pBuffer[4]);
 //	while (cursor < length) {
 //		uint32_t size = ENTOHLP(pBuffer + cursor);
-//		dbg += format("%s(%08"PRIx32")(%02"PRIx8"), ",
+//		dbg += format("%s(%08" PRIx32")(%02" PRIx8"), ",
 //				STR(NALUToString(pBuffer[cursor + 4])),
 //				size,
 //				pBuffer[cursor + 4 + size - 1]);
 //		cursor += 4 + size;
 //		computed += 4 + size;
 //	}
-//	dbg += format("\ncomputed: %"PRIu32"; available: %"PRIu32"; ok: %"PRIu8"\n",
+//	dbg += format("\ncomputed: %" PRIu32"; available: %" PRIu32"; ok: %" PRIu8"\n",
 //			computed, length, computed == length);
 //	fprintf(stdout, "%s\n", STR(dbg));
 //}

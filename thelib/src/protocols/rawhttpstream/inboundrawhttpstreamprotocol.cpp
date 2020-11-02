@@ -235,7 +235,7 @@ bool InboundRawHTTPStreamProtocol::SendCrossDomain() {
 	_outputBuffer.ReadFromString(HTTP_HEADERS_SERVER": "HTTP_HEADERS_SERVER_US"\r\n");
 	_outputBuffer.ReadFromString(HTTP_HEADERS_X_POWERED_BY": "HTTP_HEADERS_X_POWERED_BY_US"\r\n");
 	_outputBuffer.ReadFromString(HTTP_HEADERS_CONTENT_TYPE": text/xml\r\n");
-	_outputBuffer.ReadFromString(format("%s: %"PRIu64"\r\n\r\n", HTTP_HEADERS_CONTENT_LENGTH, cd.Size()));
+	_outputBuffer.ReadFromString(format("%s: %" PRIu64"\r\n\r\n", HTTP_HEADERS_CONTENT_LENGTH, cd.Size()));
 	_outputBuffer.ReadFromFs(cd, cd.Size());
 	//FINEST("_outputBuffer:\n%s", STR(_outputBuffer));
 	if (!EnqueueForOutbound()) {

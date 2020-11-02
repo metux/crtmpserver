@@ -148,7 +148,7 @@ bool File::SeekAhead(int64_t count) {
 
 	_file.seekg(count, ios_base::cur);
 	if (_file.fail()) {
-		FATAL("Unable to seek ahead %"PRId64" bytes", count);
+		FATAL("Unable to seek ahead %" PRId64" bytes", count);
 		return false;
 	}
 	return true;
@@ -167,7 +167,7 @@ bool File::SeekBehind(int64_t count) {
 
 	_file.seekg((-1) * count, ios_base::cur);
 	if (_file.fail()) {
-		FATAL("Unable to seek behind %"PRId64" bytes", count);
+		FATAL("Unable to seek behind %" PRId64" bytes", count);
 		return false;
 	}
 	return true;
@@ -181,7 +181,7 @@ bool File::SeekTo(uint64_t position) {
 
 	_file.seekg(position, ios_base::beg);
 	if (_file.fail()) {
-		FATAL("Unable to seek to position %"PRIu64, position);
+		FATAL("Unable to seek to position %" PRIu64, position);
 		return false;
 	}
 
@@ -261,7 +261,7 @@ bool File::ReadUI64(uint64_t *pValue, bool networkOrder) {
 bool File::ReadBuffer(uint8_t *pBuffer, uint64_t count) {
 	_file.read((char *) pBuffer, count);
 	if (_file.fail()) {
-		FATAL("Unable to read %"PRIu64" bytes from the file. Cursor: %"PRIu64" (0x%"PRIx64"); %d (%s)",
+		FATAL("Unable to read %" PRIu64" bytes from the file. Cursor: %" PRIu64" (0x%" PRIx64"); %d (%s)",
 				count, Cursor(), Cursor(), errno, strerror(errno));
 		return false;
 	}
@@ -434,7 +434,7 @@ bool File::WriteString(string &value) {
 bool File::WriteBuffer(const uint8_t *pBuffer, uint64_t count) {
 	_file.write((char *) pBuffer, count);
 	if (_file.fail()) {
-		FATAL("Unable to write %"PRIu64" bytes to file", count);
+		FATAL("Unable to write %" PRIu64" bytes to file", count);
 		return false;
 	}
 	return true;

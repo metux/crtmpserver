@@ -174,7 +174,7 @@ bool MP3Document::BuildFrames() {
 			frame.length = _frameSizes[version][layer][bitRateIndex]
 					[sampleRateIndex][paddingBit];
 			if (frame.length == 0) {
-				FATAL("Invalid frame length: %hhu:%hhu:%hhu:%hhu:%hhu; Cusror: %"PRIx64,
+				FATAL("Invalid frame length: %hhu:%hhu:%hhu:%hhu:%hhu; Cusror: %" PRIx64,
 						version, layer, bitRateIndex, sampleRateIndex,
 						paddingBit, _mediaFile.Cursor());
 				return false;
@@ -192,7 +192,7 @@ bool MP3Document::BuildFrames() {
 
 			//7. Seek to the next frame
 			if (!_mediaFile.SeekTo(frame.start + frame.length)) {
-				WARN("Unable to seek to %"PRIx64, frame.start + frame.length);
+				WARN("Unable to seek to %" PRIx64, frame.start + frame.length);
 				break;
 			}
 

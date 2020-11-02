@@ -163,7 +163,7 @@ UDPCarrier* UDPCarrier::Create(string bindIp, uint16_t bindPort,
 		}
 		uint32_t testVal = EHTONL(bindAddress.sin_addr.s_addr);
 		if ((testVal > 0xe0000000) && (testVal < 0xefffffff)) {
-			INFO("Subscribe to multicast %s:%"PRIu16, STR(bindIp), bindPort);
+			INFO("Subscribe to multicast %s:%" PRIu16, STR(bindIp), bindPort);
 			if (ttl <= 255) {
 				if (!setFdMulticastTTL(sock, (uint8_t) ttl)) {
 					FATAL("Unable to set ttl");
@@ -182,7 +182,7 @@ UDPCarrier* UDPCarrier::Create(string bindIp, uint16_t bindPort,
 		}
 		if (bind(sock, (sockaddr *) & bindAddress, sizeof (sockaddr)) != 0) {
 			int error = errno;
-			FATAL("Unable to bind on address: udp://%s:%"PRIu16"; Error was: %s (%"PRId32")",
+			FATAL("Unable to bind on address: udp://%s:%" PRIu16"; Error was: %s (%" PRId32")",
 					STR(bindIp), bindPort, strerror(error), error);
 			CLOSE_SOCKET(sock);
 			return NULL;

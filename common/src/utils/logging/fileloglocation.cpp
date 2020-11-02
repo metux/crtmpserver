@@ -82,7 +82,7 @@ void FileLogLocation::Log(int32_t level, string fileName, uint32_t lineNumber,
 		if (_fileIsClosed)
 			return;
 	}
-	string logEntry = format("%"PRIu64":%d:%s:%u:%s:%s",
+	string logEntry = format("%" PRIu64":%d:%s:%u:%s:%s",
 			(uint64_t) time(NULL), level, STR(fileName), lineNumber, STR(functionName),
 			STR(message));
 	if (_singleLine) {
@@ -115,7 +115,7 @@ bool FileLogLocation::OpenFile() {
 	double ts;
 	GETCLOCKS(ts);
 	ts = (ts / CLOCKS_PER_SECOND)*1000;
-	string temp = format("%s.%"PRIu64".%"PRIu64, STR(_fileName), (uint64_t) getpid(), (uint64_t) ts);
+	string temp = format("%s.%" PRIu64".%" PRIu64, STR(_fileName), (uint64_t) getpid(), (uint64_t) ts);
 	ios_base::openmode openMode = ios_base::out | ios_base::binary | ios_base::trunc;
 	_fileStream.open(STR(temp), openMode);
 	if (_fileStream.fail()) {

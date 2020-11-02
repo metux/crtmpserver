@@ -217,7 +217,7 @@ void BaseClientApplication::UnRegisterProtocol(BaseProtocol *pProtocol) {
 }
 
 void BaseClientApplication::SignalStreamRegistered(BaseStream *pStream) {
-	INFO("Stream %s(%"PRIu32") with name `%s` registered to application `%s` from protocol %s(%"PRIu32")",
+	INFO("Stream %s(%" PRIu32") with name `%s` registered to application `%s` from protocol %s(%" PRIu32")",
 			STR(tagToString(pStream->GetType())),
 			pStream->GetUniqueId(),
 			STR(pStream->GetName()),
@@ -228,7 +228,7 @@ void BaseClientApplication::SignalStreamRegistered(BaseStream *pStream) {
 }
 
 void BaseClientApplication::SignalStreamUnRegistered(BaseStream *pStream) {
-	INFO("Stream %s(%"PRIu32") with name `%s` unregistered from application `%s` from protocol %s(%"PRIu32")",
+	INFO("Stream %s(%" PRIu32") with name `%s` unregistered from application `%s` from protocol %s(%" PRIu32")",
 			STR(tagToString(pStream->GetType())),
 			pStream->GetUniqueId(),
 			STR(pStream->GetName()),

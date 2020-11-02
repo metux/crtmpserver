@@ -33,7 +33,7 @@ InNetRTMPStream::InNetRTMPStream(BaseProtocol *pProtocol,
 	_rtmpStreamId = rtmpStreamId;
 	_chunkSize = chunkSize;
 	_channelId = channelId;
-	_clientId = format("%d_%d_%"PRIz"u", _pProtocol->GetId(), _rtmpStreamId, (size_t)this);
+	_clientId = format("%d_%d_%" PRIz"u", _pProtocol->GetId(), _rtmpStreamId, (size_t)this);
 	_lastVideoTime = 0;
 	_lastAudioTime = 0;
 	_pOutFileRTMPFLVStream = NULL;
@@ -314,7 +314,7 @@ bool InNetRTMPStream::InitializeAudioCapabilities(uint8_t *pData, uint32_t lengt
 		return false;
 	}
 
-	//	FINEST("Cached the AAC audio codec initialization: %"PRIu32,
+	//	FINEST("Cached the AAC audio codec initialization: %" PRIu32,
 	//			GETAVAILABLEBYTESCOUNT(_audioCodecInit));
 
 	return true;

@@ -166,7 +166,7 @@ bool setFdTTL(int32_t fd, uint8_t ttl) {
 	int temp = ttl;
 	if (setsockopt(fd, IPPROTO_IP, IP_TTL, &temp, sizeof (temp)) != 0) {
 		int err = errno;
-		WARN("Unable to set IP_TTL: %"PRIu8"; error was %"PRId32" %s", ttl, err, strerror(err));
+		WARN("Unable to set IP_TTL: %" PRIu8"; error was %" PRId32" %s", ttl, err, strerror(err));
 	}
 	return true;
 }
@@ -175,7 +175,7 @@ bool setFdMulticastTTL(int32_t fd, uint8_t ttl) {
 	int temp = ttl;
 	if (setsockopt(fd, IPPROTO_IP, IP_MULTICAST_TTL, &temp, sizeof (temp)) != 0) {
 		int err = errno;
-		WARN("Unable to set IP_MULTICAST_TTL: %"PRIu8"; error was %"PRId32" %s", ttl, err, strerror(err));
+		WARN("Unable to set IP_MULTICAST_TTL: %" PRIu8"; error was %" PRId32" %s", ttl, err, strerror(err));
 	}
 	return true;
 }
@@ -184,7 +184,7 @@ bool setFdTOS(int32_t fd, uint8_t tos) {
 	int temp = tos;
 	if (setsockopt(fd, IPPROTO_IP, IP_TOS, &temp, sizeof (temp)) != 0) {
 		int err = errno;
-		WARN("Unable to set IP_TOS: %"PRIu8"; error was %"PRId32" %s", tos, err, strerror(err));
+		WARN("Unable to set IP_TOS: %" PRIu8"; error was %" PRId32" %s", tos, err, strerror(err));
 	}
 	return true;
 }

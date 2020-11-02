@@ -2,15 +2,14 @@ cmake_minimum_required(VERSION 2.6)
 PROJECT(thelib)
 
 #make the list with all the source files
-FILE(GLOB_RECURSE SOURCES "${CRTMPSERVER_SOURCES_ROOT}/thelib/src/*.cpp" )
+FILE(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/thelib/src/*.cpp" )
 
 #prepare the include directories
 INCLUDE_DIRECTORIES(
 	${OPENSSL_INCLUDE_PATH}
 	${LUA_INCLUDE_DIRS}
-	${CRTMPSERVER_SOURCES_ROOT}/common/include
-	${CRTMPSERVER_SOURCES_ROOT}/thelib/include
-	#/Users/shiretu/work/ffmpeg_bin/include
+	${CMAKE_SOURCE_DIR}/common/include
+	${CMAKE_SOURCE_DIR}/thelib/include
 	)
 
 #create the library
@@ -30,6 +29,6 @@ IF(${LIB_TYPE} MATCHES "SHARED")
 	INSTALL(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CRTMPSERVER_ROOT})
 ENDIF(${LIB_TYPE} MATCHES "SHARED")
 
-INSTALL(DIRECTORY ${CRTMPSERVER_SOURCES_ROOT}/${PROJECT_NAME}/include/
+INSTALL(DIRECTORY ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/include/
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/crtmpserver/${PROJECT_NAME}
 	FILES_MATCHING PATTERN "*.h")

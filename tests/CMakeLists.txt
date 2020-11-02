@@ -2,15 +2,15 @@ cmake_minimum_required(VERSION 2.6.3)
 PROJECT(tests)
 
 #make the list with all the source files
-FILE(GLOB_RECURSE SOURCES "${CRTMPSERVER_SOURCES_ROOT}/tests/src/*.cpp" )
+FILE(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/tests/src/*.cpp" )
 
 
 INCLUDE_DIRECTORIES(
 	${OPENSSL_INCLUDE_PATH}
 	${LUA_INCLUDE_DIRS}
-	${CRTMPSERVER_SOURCES_ROOT}/common/include
-	${CRTMPSERVER_SOURCES_ROOT}/thelib/include
-	${CRTMPSERVER_SOURCES_ROOT}/tests/include
+	${CMAKE_SOURCE_DIR}/common/include
+	${CMAKE_SOURCE_DIR}/thelib/include
+	${CMAKE_SOURCE_DIR}/tests/include
 )
 
 ADD_EXECUTABLE(${PROJECT_NAME}  ${SOURCES})
@@ -24,4 +24,3 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}
 	${TINYXML_LIBRARY_PATH} 
 	${LUA_LIBRARIES}
 	${DL_LIBRARY_PATH})
-

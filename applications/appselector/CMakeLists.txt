@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 PROJECT(appselector)
 
 #make the list with all the source files
-FILE(GLOB_RECURSE SOURCES "${CRTMPSERVER_SOURCES_ROOT}/applications/appselector/src/*.cpp" )
+FILE(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/applications/appselector/src/*.cpp" )
 
 SET(CMAKE_INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/${CRTMPSERVER_ROOT}/${PROJECT_NAME}")
 
@@ -10,9 +10,9 @@ SET(CMAKE_INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/${CRTMPSERVER_ROOT}/${PROJEC
 INCLUDE_DIRECTORIES(
 	${OPENSSL_INCLUDE_PATH}
 	${LUA_INCLUDE_DIRS}
-	${CRTMPSERVER_SOURCES_ROOT}/common/include
-	${CRTMPSERVER_SOURCES_ROOT}/thelib/include
-	${CRTMPSERVER_SOURCES_ROOT}/applications/appselector/include
+	${CMAKE_SOURCE_DIR}/common/include
+	${CMAKE_SOURCE_DIR}/thelib/include
+	${CMAKE_SOURCE_DIR}/applications/appselector/include
 	)
 
 string(TOUPPER ${PROJECT_NAME} TEMP_APP_NAME)

@@ -2,16 +2,16 @@ cmake_minimum_required(VERSION 2.6)
 PROJECT(stresstest)
 
 #make the list with all the source files
-FILE(GLOB_RECURSE SOURCES "${CRTMPSERVER_SOURCES_ROOT}/applications/stresstest/src/*.cpp" )
+FILE(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/applications/stresstest/src/*.cpp" )
 
 SET(CMAKE_INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/${CRTMPSERVER_ROOT}/${PROJECT_NAME}")
 
 #prepare the include directories
 INCLUDE_DIRECTORIES(
 	${LUA_INCLUDE_DIRS}
-	${CRTMPSERVER_SOURCES_ROOT}/common/include
-	${CRTMPSERVER_SOURCES_ROOT}/thelib/include
-	${CRTMPSERVER_SOURCES_ROOT}/applications/stresstest/include
+	${CMAKE_SOURCE_DIR}/common/include
+	${CMAKE_SOURCE_DIR}/thelib/include
+	${CMAKE_SOURCE_DIR}/applications/stresstest/include
 	)
 
 string(TOUPPER ${PROJECT_NAME} TEMP_APP_NAME)

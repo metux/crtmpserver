@@ -1,0 +1,133 @@
+crtmpserver (1.0~dfsg-5.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS by using SSL1.0 for now (Downgrades: #828274).
+
+ -- Adam Borowski <kilobyte@angband.pl>  Fri, 30 Dec 2016 17:40:06 +0100
+
+crtmpserver (1.0~dfsg-5.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS with gcc-6 (Closes: #811622).
+  * Remove Andres Mejia from Uploaders, per the MIA team (Closes: #743519).
+
+ -- Adam Borowski <kilobyte@angband.pl>  Sat, 30 Jul 2016 04:26:19 +0200
+
+crtmpserver (1.0~dfsg-5.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Don't hard-code dependencies (Closes: #794724).
+
+ -- Adam Borowski <kilobyte@angband.pl>  Sun, 25 Oct 2015 13:14:05 +0100
+
+crtmpserver (1.0~dfsg-5) unstable; urgency=low
+
+  * Update the kfreebsd platform specific header to unbreak compilation,
+    Closes: #713840
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 23 Jun 2013 18:40:50 +0200
+
+crtmpserver (1.0~dfsg-4) unstable; urgency=low
+
+  * Use pkg-config for detecting tinyxml, Closes: #713515
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 22 Jun 2013 17:35:59 +0200
+
+crtmpserver (1.0~dfsg-3) unstable; urgency=low
+
+  * Fix compatibility with gcc 4.7. (Closes: #667144)
+  * Fix remove and purge command for crtmpserver-apps. (Closes: #668734)
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Tue, 10 Apr 2012 09:05:35 +0300
+
+crtmpserver (1.0~dfsg-2) unstable; urgency=low
+
+  * Enable hardened CPPFLAGS. (Closes: #665323)
+  * Add myself to Uploaders field.
+
+ -- Andres Mejia <amejia@debian.org>  Thu, 22 Mar 2012 22:28:52 -0400
+
+crtmpserver (1.0~dfsg-1) unstable; urgency=low
+
+  [ Andriy Beregovenko ]
+  * New upstream version.
+  * Remove upstream conf file related things.
+  * Update changelog.
+  * Update config files.
+  * Fix a version number in changelog.
+  * Update app-scripts.
+  * Update debian build rules.
+  * Finalize changelog.
+
+  [ Andres Mejia ]
+  * Set verbose output for builds.
+  * Set compat to 9 to enable hardened build.
+  * Set default build type to Release.
+  * Bump to Standards-Version 3.9.3.
+  * Don't override -O3 set by build system.
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Thu, 22 Mar 2012 03:18:14 +0200
+
+crtmpserver (0.0~dfsg+svn611.1-2) unstable; urgency=low
+
+  * Fixed upgrade from version <= 0.0~dfsg+svn474-2
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Wed, 21 Dec 2011 02:40:04 +0200
+
+crtmpserver (0.0~dfsg+svn611.1-1) unstable; urgency=low
+
+  [ Andriy Beregovenko ]
+  * New upstream version.
+  * Split package to four packages: crtmpserver-libs, crtmpserver-apps,
+    crtmpserver-dev, crtmpserver.
+  * Add RC script and defaults file for it.
+  * A new configuration system, serving the configuration of the server.
+    The system is based on the original configuration file that is divided
+    into parts (by applications and features). Read README.Debian for more
+    information.
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Mon, 21 Nov 2011 00:55:45 +0200
+
+crtmpserver (0.0~dfsg+svn474-2) unstable; urgency=low
+
+  * Team upload.
+  * Fixed search of libraries in cmake rules (Closes: #642707)
+    Thanks to Andriy Beregovenko <jet@jet.kiev.ua> for providing the patch
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 03 Oct 2011 13:20:07 +0200
+
+crtmpserver (0.0~dfsg+svn474-1) unstable; urgency=low
+
+  [ Andriy Beregovenko ]
+  * Update debian changelog.
+  * Imported Upstream version 0.0~dfsg+svn474.
+  * Update patches relative to new upstream upload.
+
+  [ Alessio Treglia ]
+  * Add script to retrieve sources from upstream's SVN and regenerate the
+    tarball.
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Mon, 06 Jun 2011 19:41:18 +0300
+
+crtmpserver (0.0~dfsg+svn421-2) unstable; urgency=low
+
+  [ Alessio Treglia ]
+  * Bump Standards.
+
+  [ Andriy Beregovenko ]
+  * Add example basic configuration and init script
+  * Update man page
+  * Add debian readme
+  * Add patch fixes issue with rvalue access first on some platforms
+  * Add patch which fixes big endian implementation
+
+  [ Reinhard Tartler ]
+  * drop -Werror from CFLAGS (Closes: #625316)
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Sun, 08 May 2011 11:12:04 +0300
+
+crtmpserver (0.0~dfsg+svn421-1) unstable; urgency=low
+
+  * Initial release (Closes: #617641)
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Fri, 18 Mar 2011 14:30:08 +0200

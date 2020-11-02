@@ -1,0 +1,14 @@
+# Defaults for rtmpd initscript
+# sourced by /etc/init.d/crtmpserver
+
+# Enable crtmpserver start: "yes" or "no"
+ENABLED="yes"
+
+# Daemon user
+DAEMON_USER="root"
+
+# Additional options that are passed to the daemon.
+DAEMON_ARGS="--daemon"
+
+# Main configuration script for daemon
+DAEMON_CONF="/etc/crtmpserver/crtmpserver.lua"

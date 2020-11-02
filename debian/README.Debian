@@ -1,0 +1,43 @@
+crtmpserver for Debian
+======================
+
+Introduction
+------------
+The crtmpserver can provide powerful platform for processing several families
+of media streaming protocols. By default it support next protocol families:
+RTMP, RTSP, RTP/RTCP, MPEG-TS, MMS.
+
+1. New startup script system
+----------------------------
+Now all application configuration are placed in /etc/crtmpserver/applications.
+To enable any of them, simple add script base name(without .lua extension) to
+file /etc/crtmpserver/enabled_applications.conf.
+
+Main configuration script now only generate config from parts. It load logger
+configuration script /etc/crtmpserver/log_appenders.lua, after this, script
+read file /etc/crtmpserver/enabled_applications.conf and load application
+scripts (using next filename form /etc/crtmpserver/applications/$name.lua)
+
+Also, now provided file /etc/defaults/crtmpserver for more comfortable daemon
+maintaining.
+
+
+2. Change daemon user.
+-------------------------------
+By default daemon run with root privileges, but you can change this behavior.
+Next steps allows you to change daemon user:
+ a) Create system wide daemon user
+        You must add system user for daemon. Something like this:
+        adduser --system --disabled-login --ingroup adm \
+                --home /var/lib/crtmpserver \
+                --gecos crtmpserver \
+                --shell /bin/false \
+                crtmpserver
+
+ b) Change daemon user
+        Open rc configuration file /etc/defaults/crtmpserver, and
+        change DAEMON_USER to created user name(in our case this is 'crtmpserver')
+
+ c) Restart daemon
+        After all steps described above just do next:
+         /etc/init.d/crtmpserver restart

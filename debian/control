@@ -1,0 +1,99 @@
+Source: crtmpserver
+Section: video
+Priority: optional
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Uploaders:
+ Alessio Treglia <alessio@debian.org>,
+ Andriy Beregovenko <jet@jet.kiev.ua>,
+Build-Depends:
+ cmake,
+ debhelper (>= 9),
+ liblua5.1-0-dev,
+ libssl1.0-dev,
+ libtinyxml-dev,
+ pkg-config
+Standards-Version: 3.9.3
+Homepage: http://www.rtmpd.com
+Vcs-Git: git://git.debian.org/pkg-multimedia/crtmpserver.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-multimedia/crtmpserver.git;a=summary
+
+Package: crtmpserver
+Architecture: any
+Depends:
+ crtmpserver-apps,
+ crtmpserver-libs,
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: High performance RTMP/RTSP streaming server
+ crtmpserver is a high performance streaming server able to stream
+ (live or recorded) in the following technologies:
+  - To and from Flash (RTMP,RTMPE, RTMPS, RTMPT, RTMPTE)
+  - To and from embedded devices: iPhone, Android
+  - From surveillance cameras
+  - IP-TV using MPEG-TS and RTSP/RTCP/RTP protocols
+ .
+ Also, crtmpserver can be used as a high performance rendes-vous server.
+ For example, it enables you to do:
+  - Audio/Video conferencing
+  - Online gaming
+  - Online collaboration
+  - Simple/complex chat applications
+
+Package: crtmpserver-libs
+Architecture: any
+Replaces: crtmpserver (<< 0.0~dfsg+svn611.1-1)
+Breaks: crtmpserver (<< 0.0~dfsg+svn611.1-1)
+Depends:
+ openssl,
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: shared libraries for the crtmpserver platform
+ crtmpserver is a high performance streaming server able to stream
+ (live or recorded) in the following technologies:
+  - To and from Flash (RTMP,RTMPE, RTMPS, RTMPT, RTMPTE)
+  - To and from embedded devices: iPhone, Android
+  - From surveillance cameras
+  - IP-TV using MPEG-TS and RTSP/RTCP/RTP protocols
+ .
+ This package contains shared libraries('thelib' and 'common') 
+ for the crtmpserver platform and its applications.
+
+Package: crtmpserver-apps
+Architecture: any
+Replaces: crtmpserver (<< 0.0~dfsg+svn611.1-1)
+Breaks: crtmpserver (<< 0.0~dfsg+svn611.1-1)
+Depends:
+ crtmpserver-libs(>= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: base applications for the crtmpserver platform
+ crtmpserver is a high performance streaming server able to stream
+ (live or recorded) in the following technologies:
+  - To and from Flash (RTMP,RTMPE, RTMPS, RTMPT, RTMPTE)
+  - To and from embedded devices: iPhone, Android
+  - From surveillance cameras
+  - IP-TV using MPEG-TS and RTSP/RTCP/RTP protocols
+ .
+ This package contains the set of basic applications that provide
+ most frequently used feature like VOD, live streaming and proxying
+ rtmp/rtsp/mpeg-ts streams.
+
+Package: crtmpserver-dev
+Architecture: any
+Depends:
+ crtmpserver-libs(= ${binary:Version}),
+ liblua5.1-0-dev,
+ libssl1.0-dev,
+ libtinyxml-dev,
+ ${misc:Depends}
+Description: Development files for the crtmpserver platform
+ crtmpserver is a high performance streaming server able to stream
+ (live or recorded) in the following technologies:
+  - To and from Flash (RTMP,RTMPE, RTMPS, RTMPT, RTMPTE)
+  - To and from embedded devices: iPhone, Android
+  - From surveillance cameras
+  - IP-TV using MPEG-TS and RTSP/RTCP/RTP protocols
+ .
+ This package contains header files for base crtmpserver libraries
+ 'common' and 'thelib'.
+

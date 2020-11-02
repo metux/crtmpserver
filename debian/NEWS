@@ -1,0 +1,19 @@
+crtmpserver (0.0~dfsg+svn611.1-1) unstable; urgency=low
+
+    There are several major updates and improvements:
+     - RTSP support was completely remade;
+     - added MMS support;
+     - added HLS support;
+     - several improvements in MPEG-TS protocol.
+
+    Package was divided to 4 packages:
+     - crtmpserver-libs, with 'thelib' and 'common' inside. Now you do not
+       need to install all if you have very customized own build.
+     - crtmpserver-apps, default applications which provides by upstream.
+     - crtmpserver-dev, headers for 'thelib' and 'common' libs.
+     - crtmpserver, main daemon binary and startup scripts.
+
+    Implemented a new system startup for daemon. Upstream configuration file
+    was divided to parts: logger configuration script, applications.
+
+ -- Andriy Beregovenko <jet@jet.kiev.ua>  Sat, 20 Nov 2011 18:24:48 +0300

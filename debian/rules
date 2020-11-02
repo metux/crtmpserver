@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+CFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS 2>/dev/null | sed -e 's/-O2//g')
+CXXFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS 2>/dev/null | sed -e 's/-O2//g')
+DEB_BUILDDIR = obj-$(DEB_BUILD_GNU_TYPE)
+DEB_PACKAGE_VERSION  := $(shell dpkg-parsechangelog | awk '/^Version/ {print $$2}')
+DEB_UPSTREAM_VERSION := $(shell echo $(DEB_PACKAGE_VERSION) | cut -d '-' -f 1 | sed s,~,_, )
+DEB_CONFIGURE_FLAGS = \
+			-DCMAKE_BUILD_TYPE=Release \
+			-DCMAKE_VERBOSE_MAKEFILE=ON \
+			-DCMAKE_C_FLAGS="$(CFLAGS)" \
+			-DCMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+			-DCRTMPSERVER_INSTALL_PREFIX=/usr \
+			-DTEMP_FRAMEWORK_VER="$(DEB_UPSTREAM_VERSION)" \
+			-DCRTMPSERVER_SOURCES_ROOT=$(CURDIR) \
+			-DCRTMPSERVER_CONSTANTS_ROOT=$(CURDIR)/constants
+
+
+%:
+	dh $@ 
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(DEB_CONFIGURE_FLAGS)
+
+get-orig-source:
+	debian/get-svn-source.sh
+
+.PHONY: get-orig-source

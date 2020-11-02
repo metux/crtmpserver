@@ -1,0 +1,9 @@
+usr/lib/crtmpserver/applications/admin/libadmin.so
+usr/lib/crtmpserver/applications/applestreamingclient/libapplestreamingclient.so
+usr/lib/crtmpserver/applications/appselector/libappselector.so
+usr/lib/crtmpserver/applications/flvplayback/libflvplayback.so
+usr/lib/crtmpserver/applications/proxypublish/libproxypublish.so
+usr/lib/crtmpserver/applications/samplefactory/libsamplefactory.so
+usr/lib/crtmpserver/applications/stresstest/libstresstest.so
+usr/lib/crtmpserver/applications/vptests/libvptests.so
+debian/crtmpserver-apps-scripts/*	usr/share/crtmpserver-apps

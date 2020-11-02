@@ -1,0 +1,4 @@
+
+debian/crtmpserver-scripts/crtmpserver.lua	etc/crtmpserver
+debian/crtmpserver-scripts/log_appenders.lua	etc/crtmpserver
+usr/sbin/crtmpserver

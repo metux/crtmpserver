@@ -1,0 +1,19 @@
+From: Andriy Beregovenko <jet@jet.kiev.ua>
+Bug-Debian: http://bugs.debian.org/667144
+Description: Fix compatibility issue with gcc 4.7
+
+In gcc 4.7 some functions and constants was moved to
+unistd.h. This patch adds a unistd header inclusion.
+
+diff --git a/common/include/platform/linux/linuxplatform.h b/common/include/platform/linux/linuxplatform.h
+index 25d7185..7b02a49 100644
+--- a/common/include/platform/linux/linuxplatform.h
++++ b/common/include/platform/linux/linuxplatform.h
+@@ -38,6 +38,7 @@
+ #include <dlfcn.h>
+ #include <errno.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ #include <fstream>
+ #include <glob.h>
+ #include <iostream>

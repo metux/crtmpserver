@@ -1,0 +1,18 @@
+Author: Reinhard Tartler <siretart@tauware.de>
+Description: Update the kfreebsd platform specific header to unbreak compilation
+Forwarded-Upstream: not-yet
+Bug-Debian: http://bugs.debian.org/713840
+
+It seems that the "dfreebsd" platform requires some updates to allow compilation on
+(modern?) kfreebsd systems.
+
+--- a/common/include/platform/dfreebsd/dfreebsdplatform.h
++++ b/common/include/platform/dfreebsd/dfreebsdplatform.h
+@@ -50,6 +50,7 @@
+ #include <sstream>
+ #include <stdint.h>
+ #include <stdio.h>
++#include <unistd.h>
+ #include <string>
+ #include <sys/event.h>
+ #include <sys/mman.h>

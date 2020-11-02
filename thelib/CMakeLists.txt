@@ -7,7 +7,7 @@ FILE(GLOB_RECURSE SOURCES "${CRTMPSERVER_SOURCES_ROOT}/thelib/src/*.cpp" )
 #prepare the include directories
 INCLUDE_DIRECTORIES(
 	${OPENSSL_INCLUDE_PATH}
-	${LUA_INCLUDE_PATH}
+	${LUA_INCLUDE_DIRS}
 	${CRTMPSERVER_SOURCES_ROOT}/common/include
 	${CRTMPSERVER_SOURCES_ROOT}/thelib/include
 	#/Users/shiretu/work/ffmpeg_bin/include

@@ -60,7 +60,6 @@ void IOBuffer::Initialize(uint32_t expected) {
 
 bool IOBuffer::ReadFromPipe(int32_t fd, uint32_t expected, int32_t &recvAmount) {
 	//TODO: This is an UGLY hack.
-#ifndef WIN32
 	SANITY_INPUT_BUFFER;
 	if (_published + expected > _size) {
 		if (!EnsureSize(expected)) {
@@ -83,10 +82,6 @@ bool IOBuffer::ReadFromPipe(int32_t fd, uint32_t expected, int32_t &recvAmount) 
 		SANITY_INPUT_BUFFER;
 		return true;
 	}
-#else
-	NYIA;
-	return false;
-#endif
 }
 
 bool IOBuffer::ReadFromTCPFd(int32_t fd, uint32_t expected, int32_t &recvAmount) {

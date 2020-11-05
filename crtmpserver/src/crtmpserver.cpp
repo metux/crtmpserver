@@ -164,7 +164,6 @@ bool Initialize() {
 		return false;
 	}
 
-#ifndef WIN32
 	if (gRs.pConfigFile->IsDaemon()) {
 		if (!gRs.daemon) {
 			INFO("Daemonize...");
@@ -192,7 +191,6 @@ bool Initialize() {
 			Logger::SignalFork();
 		}
 	}
-#endif /* WIN32 */
 
 	INFO("Configure logger");
 	if (!gRs.pConfigFile->ConfigLogAppenders()) {
@@ -349,7 +347,6 @@ void NormalizeCommandLine(string configFile) {
 }
 
 bool ApplyUIDGID() {
-#ifndef WIN32
 	if ((uint32_t) gRs.commandLine["arguments"]["--gid"] != 0) {
 		if (setgid((uid_t) gRs.commandLine["arguments"]["--gid"]) != 0) {
 			FATAL("Unable to set GID");
@@ -362,7 +359,6 @@ bool ApplyUIDGID() {
 			return false;
 		}
 	}
-#endif
 	return true;
 }
 

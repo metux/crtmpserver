@@ -137,7 +137,6 @@ bool ConfigFile::ConfigAcceptors() {
 }
 
 bool ConfigFile::ConfigInstances() {
-#ifndef WIN32
 	int8_t instancesCount = 0;
 	if (_configuration.HasKeyChain(_V_NUMERIC, false, 1, "instancesCount")) {
 		instancesCount = (int8_t) _configuration.GetValue("instancesCount", false);
@@ -189,10 +188,6 @@ bool ConfigFile::ConfigInstances() {
 	}
 
 	return true;
-#else /* WIN32 */
-	WARN("Windows doesn't support multiple instances");
-	return true;
-#endif /* WIN32 */
 }
 
 bool ConfigFile::ConfigApplications() {

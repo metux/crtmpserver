@@ -52,13 +52,6 @@
 #define Platform SolarisPlatform
 #endif /* SOLARIS */
 
-#ifdef WIN32
-#include <WinSock2.h>
-#include <Ws2tcpip.h>
-#include "platform/windows/win32platform.h"
-#define Platform Win32Platform
-#endif /* WIN32 */
-
 #ifdef ANDROID
 #include "platform/android/androidplatform.h"
 #define Platform AndroidPlatform

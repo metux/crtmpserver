@@ -28,25 +28,21 @@
 #endif /* OSX */
 
 #ifdef LINUX
-#include "platform/linux/max.h"
 #include "platform/linux/linuxplatform.h"
 #define Platform LinuxPlatform
 #endif /* LINUX */
 
 #ifdef FREEBSD
-#include "platform/freebsd/max.h"
 #include "platform/freebsd/freebsdplatform.h"
 #define Platform FreeBSDPlatform
 #endif /* FREEBSD */
 
 #ifdef OPENBSD
-#include "platform/openbsd/max.h"
 #include "platform/openbsd/openbsdplatform.h"
 #define Platform OpenBSDPlatform
 #endif /* OPENBSD */
 
 #ifdef DFREEBSD
-#include "platform/dfreebsd/max.h"
 #include "platform/dfreebsd/dfreebsdplatform.h"
 #define Platform DFreeBSDPlatform
 #endif /* DFREEBSD */
@@ -59,13 +55,11 @@
 #ifdef WIN32
 #include <WinSock2.h>
 #include <Ws2tcpip.h>
-#include "platform/windows/max.h"
 #include "platform/windows/win32platform.h"
 #define Platform Win32Platform
 #endif /* WIN32 */
 
 #ifdef ANDROID
-#include "platform/android/max.h"
 #include "platform/android/androidplatform.h"
 #define Platform AndroidPlatform
 #endif /* ANDROID */

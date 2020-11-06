@@ -1248,8 +1248,14 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeCheckBw(BaseRTMPProtocol *pFrom,
 
 bool BaseRTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		Variant & request) {
+	string functionName = M_INVOKE_FUNCTION(request);
 	WARN("YYY Default implementation of ProcessInvokeGeneric: Request: %s",
 			STR(M_INVOKE_FUNCTION(request)));
+	if (functionName == "_checkbw") {
+		WARN("this is checkbw !\n");
+		return true;
+	}
+
 	Variant response = GenericMessageFactory::GetInvokeCallFailedError(request);
 	return SendRTMPMessage(pFrom, response);
 }

@@ -39,11 +39,13 @@ bool RTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		Variant &request) {
 
 	string functionName = M_INVOKE_FUNCTION(request);
+	WARN("app_flv: func=%s\n", functionName.c_str());
 	if (functionName == "getAvailableFlvs") {
 		return ProcessGetAvailableFlvs(pFrom, request);
 	} else if (functionName == "insertMetadata") {
 		return ProcessInsertMetadata(pFrom, request);
 	} else {
+		WARN("app_flv calling BaseRTMPAppProtocolHandler::ProcessInvokeGeneric\n");
 		return BaseRTMPAppProtocolHandler::ProcessInvokeGeneric(pFrom, request);
 	}
 }

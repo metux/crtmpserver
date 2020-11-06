@@ -239,8 +239,13 @@ uint32_t IOHandlerManager::DeleteDeadHandlers() {
 
 bool IOHandlerManager::Pulse() {
 	int32_t eventsCount = 0;
+start:
 	if ((eventsCount = epoll_wait(_eq, _query, EPOLL_QUERY_SIZE, 1000)) < 0) {
 		int32_t err = errno;
+		if ((err == EINTR) || (err == -EINTR)) {
+			WARN("interrupted system call\n");
+			goto start;
+		}
 		FATAL("Unable to execute epoll_wait: (%d) %s", err, strerror(err));
 		return false;
 	}

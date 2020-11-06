@@ -54,6 +54,7 @@ bool RTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		return ProcessGetBWInfo(pFrom, request);
 	} else {
 		WARN("Invalid function name");
+		WARN("RTMPAppProtocolHandler::ProcessInvokeGeneric() calling ProcessInvokeGeneric\n");
 		return BaseRTMPAppProtocolHandler::ProcessInvokeGeneric(pFrom, request);
 	}
 }

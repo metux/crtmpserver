@@ -614,7 +614,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvoke(BaseRTMPProtocol *pFrom,
 	string functionName = request[RM_INVOKE][RM_INVOKE_FUNCTION];
 	uint32_t currentInvokeId = M_INVOKE_ID(request);
 
-	WARN("BaseRTMPAppProtocolHandler::ProcessInvoke => %s\n", STR(functionName));
+	WARN("AA BaseRTMPAppProtocolHandler::ProcessInvoke => %s\n", STR(functionName));
 
 	if (currentInvokeId != 0) {
 		if (_nextInvokeId[pFrom->GetId()] <= currentInvokeId) {
@@ -659,7 +659,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvoke(BaseRTMPProtocol *pFrom,
 		WARN("calling ProcessInvokeCheckBW()\n");
 		return ProcessInvokeCheckBw(pFrom, request);
 	} else {
-		WARN("now calling ProcessInvokeGeneric\n");
+		WARN("123 now calling ProcessInvokeGeneric\n");
 		return ProcessInvokeGeneric(pFrom, request);
 	}
 }
@@ -1248,7 +1248,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeCheckBw(BaseRTMPProtocol *pFrom,
 
 bool BaseRTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		Variant & request) {
-	WARN("XXX Default implementation of ProcessInvokeGeneric: Request: %s",
+	WARN("YYY Default implementation of ProcessInvokeGeneric: Request: %s",
 			STR(M_INVOKE_FUNCTION(request)));
 	Variant response = GenericMessageFactory::GetInvokeCallFailedError(request);
 	return SendRTMPMessage(pFrom, response);

@@ -613,6 +613,9 @@ bool BaseRTMPAppProtocolHandler::ProcessInvoke(BaseRTMPProtocol *pFrom,
 	//PROD_ACCESS(CreateLogEventInvoke(pFrom, request));
 	string functionName = request[RM_INVOKE][RM_INVOKE_FUNCTION];
 	uint32_t currentInvokeId = M_INVOKE_ID(request);
+
+	WARN("BaseRTMPAppProtocolHandler::ProcessInvoke => %s\n", STR(functionName));
+
 	if (currentInvokeId != 0) {
 		if (_nextInvokeId[pFrom->GetId()] <= currentInvokeId) {
 			_nextInvokeId[pFrom->GetId()] = currentInvokeId + 1;

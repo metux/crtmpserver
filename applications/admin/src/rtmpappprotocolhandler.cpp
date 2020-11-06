@@ -57,6 +57,9 @@ bool RTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		Variant &request) {
 	//1. Get the function name
 	string functionName = M_INVOKE_FUNCTION(request);
+
+	WARN("RTMP invoke functionName=%s", functionName.c_str());
+
 	if (functionName == "ListApplications") {
 		return ProcessListApplications(pFrom, request);
 	} else if (functionName == "ListServices") {

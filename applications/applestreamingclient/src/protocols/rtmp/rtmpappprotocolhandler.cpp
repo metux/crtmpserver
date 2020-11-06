@@ -45,6 +45,9 @@ void RTMPAppProtocolHandler::UnRegisterProtocol(BaseProtocol *pProtocol) {
 bool RTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		Variant &request) {
 	string functionName = M_INVOKE_FUNCTION(request);
+
+	WARN("RTMPAppProtocolHandler --> %s\n", functionName.c_str());
+
 	if (functionName == "setupStream") {
 		return ProcessSetupStream(pFrom, request);
 	} else if (functionName == "getBWInfo") {

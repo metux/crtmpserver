@@ -659,6 +659,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvoke(BaseRTMPProtocol *pFrom,
 		WARN("calling ProcessInvokeCheckBW()\n");
 		return ProcessInvokeCheckBw(pFrom, request);
 	} else {
+		WARN("now calling ProcessInvokeGeneric\n");
 		return ProcessInvokeGeneric(pFrom, request);
 	}
 }
@@ -1218,7 +1219,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeGetStreamLength(BaseRTMPProtocol *
 
 bool BaseRTMPAppProtocolHandler::ProcessInvokeOnBWDone(BaseRTMPProtocol *pFrom,
 		Variant &request) {
-	//WARN("ProcessInvokeOnBWDone");
+	WARN("ProcessInvokeOnBWDone");
 	return true;
 }
 
@@ -1247,7 +1248,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeCheckBw(BaseRTMPProtocol *pFrom,
 
 bool BaseRTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 		Variant & request) {
-	WARN("Default implementation of ProcessInvokeGeneric: Request: %s",
+	WARN("XXX Default implementation of ProcessInvokeGeneric: Request: %s",
 			STR(M_INVOKE_FUNCTION(request)));
 	Variant response = GenericMessageFactory::GetInvokeCallFailedError(request);
 	return SendRTMPMessage(pFrom, response);

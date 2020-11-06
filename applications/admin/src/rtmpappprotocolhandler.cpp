@@ -67,6 +67,7 @@ bool RTMPAppProtocolHandler::ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 	} else if (functionName == "StartTests") {
 		return ProcessStartTests(pFrom, request);
 	} else {
+		WARN("calling BaseRTMPAppProtocolHandler::ProcessInvokeGeneric\n");
 		return BaseRTMPAppProtocolHandler::ProcessInvokeGeneric(pFrom, request);
 	}
 }

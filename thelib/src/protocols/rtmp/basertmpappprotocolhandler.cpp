@@ -655,6 +655,8 @@ bool BaseRTMPAppProtocolHandler::ProcessInvoke(BaseRTMPProtocol *pFrom,
 		return ProcessInvokeOnBWDone(pFrom, request);
 	} else if (functionName == RM_INVOKE_FUNCTION_CHECKBANDWIDTH) {
 		return ProcessInvokeCheckBandwidth(pFrom, request);
+	} else if (functionName == RM_INVOKE_FUNCTION_CHECKBW) {
+		return ProcessInvokeCheckBw(pFrom, request);
 	} else {
 		return ProcessInvokeGeneric(pFrom, request);
 	}
@@ -1225,6 +1227,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeCheckBandwidth(BaseRTMPProtocol *p
 		WARN("checkBandwidth is disabled.");
 		return true;
 	}
+	WARN("sending _onBWCheckMessage to flash player\n");
 	if (!SendRTMPMessage(pFrom, _onBWCheckMessage, true)) {
 		FATAL("Unable to send message to flash player");
 		return false;
@@ -1232,6 +1235,12 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeCheckBandwidth(BaseRTMPProtocol *p
 	double temp;
 	GETCLOCKS(temp);
 	pFrom->GetCustomParameters()["lastOnnBWCheckMessage"] = temp;
+	return true;
+}
+
+bool BaseRTMPAppProtocolHandler::ProcessInvokeCheckBw(BaseRTMPProtocol *pFrom,
+		Variant &request) {
+	WARN("received _checkbw message\n");
 	return true;
 }
 

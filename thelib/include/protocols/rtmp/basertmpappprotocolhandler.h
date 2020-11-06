@@ -178,6 +178,8 @@ public:
 			Variant &request);
 	virtual bool ProcessInvokeCheckBandwidth(BaseRTMPProtocol *pFrom,
 			Variant &request);
+	virtual bool ProcessInvokeCheckBw(BaseRTMPProtocol *pFrom,
+			Variant &request);
 	virtual bool ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
 			Variant &request);
 	virtual bool ProcessInvokeResult(BaseRTMPProtocol *pFrom,

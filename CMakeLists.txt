@@ -72,6 +72,11 @@ ELSE($ENV{COMPILE_STATIC} MATCHES "1")
 ENDIF($ENV{COMPILE_STATIC} MATCHES "1")
 
 PKG_CHECK_MODULES(LUA REQUIRED "lua51")
+FIND_PROGRAM(LUA_COMMAND NAMES "lua")
+IF(${LUA_COMMAND} MATCHES "LUA_COMMAND-NOTFOUND")
+	MESSAGE(FATAL_ERROR "lua interpreter not found")
+ENDIF(${LUA_COMMAND} MATCHES "LUA_COMMAND-NOTFOUND")
+
 PKG_CHECK_MODULES(TINYXML REQUIRED "tinyxml")
 
 #fine tunning
@@ -145,13 +150,12 @@ SET(CMAKE_CXX_FLAGS_RELEASE "-O3 -fno-strict-aliasing")
 #SET(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 #generate defines.h
-IF (EXISTS ${CMAKE_SOURCE_DIR}/common/include/defines.h)
-	MESSAGE(STATUS "Defines are in place")
-ELSE (EXISTS ${CMAKE_SOURCE_DIR}/common/include/defines.h)
-	MESSAGE(STATUS "We need to rebuild the defines")
-	EXECUTE_PROCESS(COMMAND lua ${CMAKE_SOURCE_DIR}/constants/constants.lua cpp ${CMAKE_SOURCE_DIR}/common/include/defines.h)
-ENDIF(EXISTS ${CMAKE_SOURCE_DIR}/common/include/defines.h)
-
+MESSAGE(STATUS "We need to rebuild the defines")
+EXECUTE_PROCESS(COMMAND ${LUA_COMMAND} ${CMAKE_SOURCE_DIR}/constants/constants.lua cpp
+			${CMAKE_SOURCE_DIR}/common/include/defines.h RESULT_VARIABLE ret)
+IF(NOT ret EQUAL "0")
+	MESSAGE(FATAL_ERROR "Failed to generate defines.h")
+ENDIF()
 
 #ADD_DEFINITIONS(-DHAS_SAFE_LOGGER)
 ADD_SUBDIRECTORY(common common)

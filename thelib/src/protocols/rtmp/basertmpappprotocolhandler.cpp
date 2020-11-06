@@ -656,6 +656,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvoke(BaseRTMPProtocol *pFrom,
 	} else if (functionName == RM_INVOKE_FUNCTION_CHECKBANDWIDTH) {
 		return ProcessInvokeCheckBandwidth(pFrom, request);
 	} else if (functionName == RM_INVOKE_FUNCTION_CHECKBW) {
+		WARN("calling ProcessInvokeCheckBW()\n");
 		return ProcessInvokeCheckBw(pFrom, request);
 	} else {
 		return ProcessInvokeGeneric(pFrom, request);
@@ -1265,6 +1266,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeResult(BaseRTMPProtocol *pFrom,
 bool BaseRTMPAppProtocolHandler::ProcessInvokeResult(BaseRTMPProtocol *pFrom,
 		Variant &request, Variant & response) {
 	string functionName = M_INVOKE_FUNCTION(request);
+	WARN("BaseRTMPAppProtocolHandler::ProcessInvokeResult ==> func=%s\n", functionName.c_str());
 	if (functionName == RM_INVOKE_FUNCTION_CONNECT) {
 		return ProcessInvokeConnectResult(pFrom, request, response);
 	} else if (functionName == RM_INVOKE_FUNCTION_CREATESTREAM) {
@@ -1274,6 +1276,7 @@ bool BaseRTMPAppProtocolHandler::ProcessInvokeResult(BaseRTMPProtocol *pFrom,
 	} else if (functionName == RM_INVOKE_FUNCTION_ONBWCHECK) {
 		return ProcessInvokeOnBWCheckResult(pFrom, request, response);
 	} else {
+		WARN("calling ProcessInvokeGenericResult\n");
 		return ProcessInvokeGenericResult(pFrom, request, response);
 	}
 }
